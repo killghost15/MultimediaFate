@@ -1,0 +1,24 @@
+{
+  "name": "fate",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/killghost15/MultimediaFate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/killghost15/MultimediaFate/issues"
+  },
+  "homepage": "https://github.com/killghost15/MultimediaFate#readme",
+  "description": "",
+  "dependencies": {
+    "bootstrap": "^4.1.1",
+    "express": "^4.16.3",
+    "jquery": "^3.3.1"
+  }
+}
