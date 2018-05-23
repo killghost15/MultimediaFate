@@ -8,9 +8,15 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
+app.get('/decisionPage',function(req,res){
+  res.sendFile(path.join(__dirname + '/decisionPage.html'));
+
+});
+
+
 
 app.get('/video', function(req, res) {
-  const path = 'assets/sample.mp4';
+  const path = 'assets/sample.mp4'; //change for the diferent video get with id='something' then path = 'assets/'+id+'.mp4'
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const range = req.headers.range;
