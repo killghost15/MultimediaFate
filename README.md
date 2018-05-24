@@ -1,1 +1,1 @@
-Run "npm install" then "gulp dev"
+Run "npm install" then "npm start"
