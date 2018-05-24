@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Time to make a choice</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/portfolio-item.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="col-md-8" id="videocontainer">
+        <video id="videoPlayer" controls>
+            <source src="http://localhost:3000/video?file=Intro" type="video/mp4">
+        </video>
+    </div>
+	<button id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)">hey there</button>
+	<button id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)">hey there</button>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+
+</html>
+
+<script>
+	
+	
+	function loadVideo(answer)
+	{
+		videoName = answer.replace(/ /g , "_");
+		
+		$("#videoPlayer").remove();
+		
+    	var videourl = 'http://localhost:3000/video?file='+videoName;  
+		var video = '<video id="videoPlayer" autoplay controls><source src="'+videourl+'" type="video/mp4"</video>'; 
+		$("#videocontainer").append(video);
+		
+		videl = $(document).find('#videoPlayer')[0]; 
+	}
+
+</script>

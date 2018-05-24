@@ -8,15 +8,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
-app.get('/decisionPage',function(req,res){
-  res.sendFile(path.join(__dirname + '/decisionPage.html'));
+app.get('/play',function(req,res){
+  res.sendFile(path.join(__dirname + '/Play.html'));
 
 });
 
 
 
 app.get('/video', function(req, res) {
-  const path = 'assets/sample.mp4'; //change for the diferent video get with id='something' then path = 'assets/'+id+'.mp4'
+	fileName = req.query.file + ".mp4";
+	console.log(fileName);
+  const path = 'scenes/'+fileName; //change for the diferent video get with id='something' then path = 'assets/'+id+'.mp4'
   const stat = fs.statSync(path);
   const fileSize = stat.size;
   const range = req.headers.range;
