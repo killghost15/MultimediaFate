@@ -13,7 +13,35 @@ app.get('/play',function(req,res){
 
 });
 
-
+app.get("/answers", function(req, res) {
+	sceneName = req.query.sceneName;
+	underscoreLessSceneName = sceneName.replace(/_/g, " "); 
+	var choices;
+	fs.readFile('./CHOICES_TREE.txt', "utf8", 
+	function (err,data) {
+		if (err) 
+		{
+			return console.log(err);
+		}
+		dataString = data.toString('ascii', 0, data.length);
+		var lines = dataString.split("\n");
+		console.log(lines.length);
+		for(var i=0;i<lines.length;i++)
+		{
+			var splited = lines[i].split("-");
+			console.log(lines[0]);
+			if(splited[0] == underscoreLessSceneName)
+			{
+				console.log("yey " + splited[1]);
+				res.send(splited[1])
+				return;
+			}
+		}
+		return;	
+	});
+	return;
+	
+})
 
 app.get('/video', function(req, res) {
 	fileName = req.query.file + ".mp4";

@@ -17,13 +17,18 @@
   </head>
 
   <body>
+	<audio id="music" loop>
+		<source src="music/main_theme.mp3" type="audio/ogg">
+	</audio> 
     <div class="col-md-8" id="videocontainer">
         <video id="videoPlayer" controls>
             <source src="http://localhost:3000/video?file=Intro" type="video/mp4">
         </video>
     </div>
-	<button id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)">hey there</button>
-	<button id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)">hey there</button>
+	<button class="answer" id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)" style="display: none;">Things will get better</button>
+	<button class="answer" id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
+	<button class="answer" id="upAnswer" value="none" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
+	<button class="answer" id="downAnswer" value="none" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -32,8 +37,8 @@
 </html>
 
 <script>
-	
-	
+
+	document.getElementById('videoPlayer').addEventListener('ended',showAnswers,false);
 	function loadVideo(answer)
 	{
 		videoName = answer.replace(/ /g , "_");
@@ -45,6 +50,81 @@
 		$("#videocontainer").append(video);
 		
 		videl = $(document).find('#videoPlayer')[0]; 
+		videl.addEventListener('ended',showAnswers,false);
+		
+		$.get("/answers?sceneName="+videoName, function(string) 
+		{
+			choices = string.split(";");
+			
+			if(choices.length==1)
+			{
+				$(".answer").hide();
+				$("#leftAnswer").val("none");
+				$("#leftAnswer").text("none");
+				$("#rightAnswer").val("none");
+				$("#rightAnswer").text("none");
+				$("#upAnswer").val("none");
+				$("#upAnswer").text("none");
+				$("#downAnswer").val("none");
+				$("#downAnswer").text("none");
+			}
+			if(choices.length==2)
+			{
+				
+				$(".answer").hide();
+				$("#leftAnswer").val(choices[0]);
+				$("#leftAnswer").text(choices[0]);
+				$("#rightAnswer").val(choices[1]);
+				$("#rightAnswer").text(choices[1]);
+				$("#upAnswer").val("none");
+				$("#upAnswer").text("none");
+				$("#downAnswer").val("none");
+				$("#downAnswer").text("none");
+			}
+			if(choices.length==3)
+			{
+				$(".answer").hide();
+				$("#leftAnswer").val(choices[0]);
+				$("#leftAnswer").text(choices[0]);
+				$("#rightAnswer").val(choices[1]);
+				$("#rightAnswer").text(choices[1]);
+				$("#upAnswer").val(choices[2]);
+				$("#upAnswer").text(choices[2]);
+				$("#downAnswer").val("none");
+				$("#downAnswer").text("none");
+			}
+			if(choices.length==4)
+			{
+				$(".answer").hide();
+				$("#leftAnswer").val(choices[0]);
+				$("#leftAnswer").text(choices[0]);
+				$("#rightAnswer").val(choices[1]);
+				$("#rightAnswer").text(choices[1]);
+				$("#upAnswer").val(choices[2]);
+				$("#upAnswer").text(choices[2]);
+				$("#downAnswer").val(choices[3]);
+				$("#downAnswer").text(choices[3]);
+			}
+		});
+		
+	}
+	
+	function showAnswers()
+	{
+		var shown = 0;
+		$(".answer").each(function( index ) {
+			
+			if($( this ).val() != "none")
+			{
+				$( this ).show();
+				shown++;
+			}
+		});
+		if(shown == 0)
+		{
+			$("#music")[0].play();
+		}
+		
 	}
 
 </script>
