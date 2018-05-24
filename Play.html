@@ -54,10 +54,11 @@
 	
 	
     
-
+    <div id="overlay">Darkening for effect</div>
   </body>
 
 </html>
+
 
 <script>
 
@@ -134,6 +135,7 @@
 	
 	function showAnswers()
 	{
+        var overlay = document.getElementById('overlay');
 		var shown = 0;
 		$(".answer").each(function( index ) {
 			
@@ -147,7 +149,7 @@
 		{
 			$("#music")[0].play();
 		}
-		
+	 overlay.style.visibility='visible';	
 	}
 
 </script>
