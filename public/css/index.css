@@ -37,3 +37,19 @@ h2{
 	
 	
 }
+#overlay {
+  position: absolute; 
+  top: 0px; 
+  color: #FFF; 
+  text-align: center;
+  font-size: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 500%;
+  height:500%;
+  z-index: 2147483647;
+  visibility: hidden;
+}
+
+#videoPlayer {
+  z-index: 1;
+}
