@@ -27,10 +27,13 @@
 			<div class="col-sm">
 				<button class="answer" id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)" style="display: none;">Things will get better</button>
 			</div>
+
 			<div id="videocontainer" class="col-sm">
+
 				<video id="videoPlayer" width="700px" controls>
 					<source src="http://localhost:3000/video?file=Intro" type="video/mp4">
 				</video>
+                <div id="overlay"></div>
 			</div>
 			<div class="col-sm">
 				<button class="answer" id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
@@ -53,18 +56,19 @@
 	
 	
 	
-    
-    <div id="overlay">Darkening for effect</div>
   </body>
 
 </html>
 
 
 <script>
-
+    
 	document.getElementById('videoPlayer').addEventListener('ended',showAnswers,false);
 	function loadVideo(answer)
 	{
+
+        var overlay = document.getElementById('overlay');
+        overlay.style.visibility='hidden';
 		videoName = answer.replace(/ /g , "_");
 		
 		$("#videoPlayer").remove();
@@ -141,6 +145,7 @@
 			
 			if($( this ).val() != "none")
 			{
+                overlay.style.visibility='visible';
 				$( this ).show();
 				shown++;
 			}
@@ -149,7 +154,7 @@
 		{
 			$("#music")[0].play();
 		}
-	 overlay.style.visibility='visible';	
+	 	
 	}
 
 </script>
