@@ -1,3 +1,8 @@
+@font-face {
+    font-family: buttonFont;
+    src: url(./ARBERKLEY.ttf);
+}
+
 body, html {
     height: 100%;
 	margin: 0;
@@ -15,6 +20,23 @@ body, html {
     background-size: cover;
 }
 
+button {
+	background-color:#2d2e2e;
+	-moz-border-radius:42px;
+	-webkit-border-radius:42px;
+	border-radius:42px;
+	border:2px solid #edd17c;
+	display:inline-block;
+	cursor:pointer;
+	color:#f7cc9e;
+	font-family:buttonFont;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 4px #f0cc3c;
+}
+
+
 
 .btn_wrapper
  {
@@ -24,8 +46,8 @@ body, html {
 button{
 	position: absolute;
     top: 50%;
-	width: 300px;
-	margin-left: -150px;
+	width: 150px;
+	margin-left: -75px;
 }
 
 h1{
