@@ -14,7 +14,7 @@
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/portfolio-item.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/index.css">        
+    <link rel="stylesheet" type="text/css" href="css/main.css">        
   </head>
 
   <body>
@@ -25,7 +25,20 @@
 		</center>
 		<div class="row">
 			<div class="col-sm">
-				<button class="answer" id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)" style="display: none;">Things will get better</button>
+			</div>
+			<div class="col-sm">
+				<center>
+					<button class="answer horizontalAnswer" id="upAnswer" value="none" onclick="loadVideo(this.value)" style="display: none;"></button>
+				</center>
+			</div>
+			<div class="col-sm">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<center>
+					<button class="answer verticalAnswer" id="leftAnswer" value="Things will get better" onclick="loadVideo(this.value)" style="display: none;">Things will get better</button>
+				</center>
 			</div>
 
 			<div id="videocontainer" class="col-sm">
@@ -36,14 +49,18 @@
                 <div id="overlay"></div>
 			</div>
 			<div class="col-sm">
-				<button class="answer" id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
+				<center>
+					<button class="answer verticalAnswer" id="rightAnswer" value="You matter not just to me" onclick="loadVideo(this.value)" style="display: none;">You matter not just to me</button>
+				</center>
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm">
 			</div>
 			<div class="col-sm">
-				<button class="answer" id="downAnswer" value="none" onclick="loadVideo(this.value)" style="display: none;"></button>
+				<center>
+					<button class="answer horizontalAnswer" id="downAnswer" value="none" onclick="loadVideo(this.value)" style="display: none;"></button>
+				</center>
 			</div>
 			<div class="col-sm">
 			</div>
@@ -116,10 +133,10 @@
 				$("#leftAnswer").text(choices[0]);
 				$("#rightAnswer").val(choices[1]);
 				$("#rightAnswer").text(choices[1]);
-				$("#upAnswer").val(choices[2]);
-				$("#upAnswer").text(choices[2]);
-				$("#downAnswer").val("none");
-				$("#downAnswer").text("none");
+				$("#downAnswer").val(choices[2]);
+				$("#downAnswer").text(choices[2]);
+				$("#upAnswer").val("none");
+				$("#upAnswer").text("none");
 			}
 			if(choices.length==4)
 			{
